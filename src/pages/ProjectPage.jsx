@@ -45,7 +45,10 @@ const ProjectPage = () => {
             </Select>
             {
                 cards.issues && cards.issues.map((issue) => {
-                    return <div key={issue.id}>
+                    return <div style={{
+                        display:"flex",
+                        flexDirection: "row"
+                    }} key={issue.id}>
                             <Typography>{issue.key}</Typography>
                         <Typography>{issue.fields.status.name}</Typography>
                         <Typography>{issue.fields.summary}</Typography>
