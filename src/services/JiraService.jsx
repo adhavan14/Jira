@@ -27,3 +27,19 @@ export const fetchListOfCards = async (project) => {
         })
 
 }
+
+export const fetchDevelopmentDetails = async (issueId) => {
+
+    const url = "http://localhost:8080/jira/dev"
+    const params = {
+        params: {
+            issueId : issueId,
+            applicationType : "GitHub",
+            dataType : "branch"
+        }
+    }
+
+    return axios.get(url, params)
+        .then(response => response.data)
+        .catch(error => console.log(error))
+}
