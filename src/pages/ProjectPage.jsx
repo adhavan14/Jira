@@ -1,4 +1,4 @@
-import {MenuItem, Select, Typography} from "@mui/material";
+import {ListItem, ListItemText, MenuItem, Select, Typography} from "@mui/material";
 import {useEffect, useState} from "react";
 import {fetchDevelopmentDetails, fetchListOfCards, fetchListOfProjects} from "../services/JiraService.jsx";
 
@@ -20,7 +20,6 @@ const ProjectPage = () => {
     }
 
     const handleCard = (event) => {
-        console.log(event.target.value)
         setCard(event.target.value)
     }
 
@@ -69,6 +68,15 @@ const ProjectPage = () => {
                     })
                 }
             </Select>
+            {
+                developmentDetails.detail && developmentDetails.detail.map((detail) => {
+                return detail.branches.map((branch) => {
+                        return <ListItem key={branch.name}>
+                            <ListItemText>{branch.lastCommit.message}</ListItemText>
+                        </ListItem>
+                    })
+                })
+            }
 
         </div>
     )
